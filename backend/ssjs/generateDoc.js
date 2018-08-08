@@ -1,0 +1,1 @@
+  for(let i = 0; i<15; i += 1){	  new ds.Document({	    docTitle: (i+1)+' Document ...',	    docCode: 'DOC-0'+ (i+1)	  }).save();  }   /*var newDoc = new ds.Document({	docTitle: "First.",	docCode: "DOC-001"});newDoc.save();*/  

@@ -1,0 +1,751 @@
+{
+	"toJSON": true,
+	"extraProperties": {
+		"version": "2",
+		"classes": {
+			"Todo": {
+				"panelColor": "#eee",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 20,
+						"Y": 53
+					}
+				}
+			},
+			"User": {
+				"panelColor": "#eee",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": false,
+					"position": {
+						"X": 1011,
+						"Y": 39
+					}
+				}
+			},
+			"TodoUser": {
+				"panelColor": "#4FA997",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": false,
+					"position": {
+						"X": 387,
+						"Y": 47
+					}
+				}
+			},
+			"UserTodoAssign": {
+				"panelColor": "#D7E3BC",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": false,
+					"position": {
+						"X": 632,
+						"Y": 39
+					}
+				}
+			},
+			"Choice": {
+				"panelColor": "#D88CFF",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": false,
+					"position": {
+						"X": 43,
+						"Y": 723
+					}
+				}
+			},
+			"TodoUserRole": {
+				"panelColor": "#D7E3BC",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": false,
+					"position": {
+						"X": 52,
+						"Y": 508
+					}
+				}
+			},
+			"TodoType": {
+				"panelColor": "#D7E3BC",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 402,
+						"Y": 482
+					}
+				}
+			},
+			"Document": {
+				"panelColor": "#E5B9B7",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 63,
+						"Y": 896
+					}
+				}
+			},
+			"DocServer": {
+				"panelColor": "#7F7F7F",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 338,
+						"Y": 899
+					}
+				}
+			},
+			"ChangeTracking": {
+				"panelColor": "#70CCC2",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 676,
+						"Y": 792
+					}
+				}
+			}
+		},
+		"model": {
+			"scriptMode": "manual",
+			"workspaceLeft": 0,
+			"workspaceTop": 879,
+			"lastScriptLocation": {
+				"User": {
+					"method": "User/User-methods.js",
+					"events": "User/User-events.js",
+					"computed": "User/User-events.js"
+				},
+				"Todo": {
+					"method": "Todo/Todo-methods.js",
+					"events": "Todo/Todo-events.js"
+				},
+				"UserTodoAssign": {
+					"method": "UserTodoAssign/UserTodoAssign-methods.js"
+				}
+			}
+		}
+	},
+	"dataClasses": [
+		{
+			"name": "ChangeTracking",
+			"className": "ChangeTracking",
+			"collectionName": "ChangeTrackingCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "className",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "entityKey",
+					"kind": "storage",
+					"scope": "public",
+					"type": "uuid",
+					"indexKind": "auto"
+				},
+				{
+					"name": "changes",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "modifiedDate",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false,
+					"indexKind": "auto"
+				},
+				{
+					"name": "modifiedBy",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "User",
+					"path": "User"
+				}
+			],
+			"methods": [
+				{
+					"name": "changedCollection",
+					"applyTo": "entityCollection",
+					"scope": "public",
+					"from": "$mainModel.ChangeTracking.collectionMethods.changedCollection",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
+					"name": "changedEntity",
+					"applyTo": "entity",
+					"scope": "public",
+					"from": "$mainModel.ChangeTracking.entityMethods.changedEntity",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
+					"name": "getChanges",
+					"applyTo": "dataClass",
+					"scope": "publicOnServer",
+					"from": "$mainModel.ChangeTracking.methods.getChanges",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
+					"name": "writeChanges",
+					"applyTo": "dataClass",
+					"scope": "publicOnServer",
+					"from": "$mainModel.ChangeTracking.methods.writeChanges",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				}
+			]
+		},
+		{
+			"name": "Choice",
+			"className": "Choice",
+			"collectionName": "ChoiceCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "choiceCategory",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "choiceDescription",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"name": "TodoUserRole",
+			"className": "TodoUserRole",
+			"collectionName": "TodoUserRoles",
+			"scope": "public",
+			"extends": "Choice",
+			"restrictingQuery": [
+				{
+					"queryStatement": "choiceCategory = 'TodoUserRole'"
+				}
+			],
+			"attributes": [
+				{
+					"name": "todoUsers",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "TodoUser",
+					"path": "TodoUser"
+				}
+			]
+		},
+		{
+			"name": "TodoType",
+			"className": "TodoType",
+			"collectionName": "TodoTypes",
+			"scope": "public",
+			"extends": "Choice",
+			"restrictingQuery": [
+				{
+					"queryStatement": "choiceCategory = 'TodoType'"
+				}
+			],
+			"attributes": [
+				{
+					"name": "todosTyped",
+					"kind": "relatedEntities",
+					"matchColumn": "todos",
+					"scope": "public",
+					"type": "Todos",
+					"reversePath": true,
+					"path": "type"
+				}
+			]
+		},
+		{
+			"name": "DocServer",
+			"className": "DocServer",
+			"collectionName": "DocServerCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "uuid",
+					"primKey": true,
+					"autogenerate": true
+				},
+				{
+					"name": "serverDocAddress",
+					"kind": "storage",
+					"matchColumn": "serverAdress",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "serverDocPort",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"name": "Document",
+			"className": "Document",
+			"collectionName": "DocumentCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "uuid",
+					"primKey": true,
+					"autogenerate": true
+				},
+				{
+					"name": "docTitle",
+					"kind": "storage",
+					"matchColumn": "docName",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "docCode",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "docRecordDate",
+					"kind": "storage",
+					"matchColumn": "recordDate",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "docBlob",
+					"kind": "storage",
+					"matchColumn": "blobDoc",
+					"scope": "public",
+					"type": "blob"
+				},
+				{
+					"name": "docFile",
+					"kind": "storage",
+					"matchColumn": "fileDoc,file",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "docCategory",
+					"kind": "storage",
+					"matchColumn": "categoryDoc",
+					"scope": "public",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"name": "Todo",
+			"className": "Todo",
+			"collectionName": "Todos",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"autogenerate": true,
+					"type": "uuid",
+					"primKey": true
+				},
+				{
+					"name": "description",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "done",
+					"kind": "storage",
+					"scope": "public",
+					"type": "bool"
+				},
+				{
+					"name": "mainTodo",
+					"kind": "relatedEntity",
+					"matchColumn": "mainTodos,subTodos",
+					"scope": "public",
+					"type": "Todo",
+					"path": "Todo"
+				},
+				{
+					"name": "SubTodos",
+					"kind": "relatedEntities",
+					"matchColumn": "mainTodo",
+					"scope": "public",
+					"type": "Todos",
+					"reversePath": true,
+					"path": "mainTodo"
+				},
+				{
+					"name": "assignedTo",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "TodoUsers",
+					"reversePath": true,
+					"path": "todoAssigned"
+				},
+				{
+					"name": "users",
+					"kind": "relatedEntities",
+					"matchColumn": "user",
+					"scope": "public",
+					"type": "UserTodoAssigns",
+					"path": "assignedTo.userAssigned"
+				},
+				{
+					"name": "type",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "TodoType",
+					"path": "TodoType"
+				},
+				{
+					"name": "userID",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "public",
+					"kind": "storage",
+					"scope": "public",
+					"type": "bool"
+				}
+			],
+			"events": [
+				{
+					"kind": "save",
+					"from": "$mainModel.Todo.events.save",
+					"userDefined": true
+				},
+				{
+					"kind": "init",
+					"from": "$mainModel.Todo.events.init"
+				},
+				{
+					"kind": "restrict",
+					"from": "$mainModel.Todo.events.restrict",
+					"userDefined": true
+				}
+			],
+			"methods": [
+				{
+					"name": "getChanges",
+					"applyTo": "entity",
+					"scope": "publicOnServer",
+					"from": "$mainModel.Todo.entityMethods.getChanges",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
+					"name": "getUsers",
+					"applyTo": "entity",
+					"scope": "public",
+					"from": "$mainModel.Todo.entityMethods.getUsers",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
+					"name": "removeTodo",
+					"applyTo": "entity",
+					"scope": "public",
+					"from": "$mainModel.Todo.entityMethods.removeTodo",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				}
+			]
+		},
+		{
+			"name": "TodoUser",
+			"className": "TodoUser",
+			"collectionName": "TodoUsers",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"autogenerate": true,
+					"type": "uuid",
+					"primKey": true
+				},
+				{
+					"name": "assignOpen",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "assignDue",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "assignDone",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "comments",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "todoAssigned",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Todo",
+					"path": "Todo"
+				},
+				{
+					"name": "roleOfUser",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "userAssigned",
+					"kind": "relatedEntity",
+					"matchColumn": "todosAssigned",
+					"scope": "public",
+					"type": "UserTodoAssign",
+					"path": "UserTodoAssign"
+				},
+				{
+					"name": "todoUserRoles",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "TodoUserRoles",
+					"reversePath": true,
+					"path": "todoUsers"
+				}
+			]
+		},
+		{
+			"name": "User",
+			"className": "User",
+			"collectionName": "Users",
+			"scope": "public",
+			"publishAsJSGlobal": false,
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"autogenerate": true,
+					"type": "uuid",
+					"primKey": true
+				},
+				{
+					"name": "email",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string",
+					"events": [
+						{
+							"kind": "validate",
+							"from": "$mainModel.User.email.events.validate",
+							"userDefined": true
+						}
+					]
+				},
+				{
+					"name": "password",
+					"kind": "calculated",
+					"scope": "public",
+					"type": "string",
+					"scriptKind": "javascript",
+					"onGet": [
+						{
+							"from": "$mainModel.User.password.onGet",
+							"userDefined": true
+						}
+					],
+					"onSet": [
+						{
+							"from": "$mainModel.User.password.onSet",
+							"userDefined": true
+						}
+					]
+				},
+				{
+					"name": "HA1Key",
+					"kind": "storage",
+					"scope": "publicOnServer",
+					"type": "string"
+				},
+				{
+					"name": "photo",
+					"kind": "storage",
+					"scope": "public",
+					"type": "image"
+				},
+				{
+					"name": "role",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "fullName",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "group",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "changeTrackingCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "ChangeTrackingCollection",
+					"reversePath": true,
+					"path": "modifiedBy"
+				}
+			],
+			"events": [
+				{
+					"kind": "save",
+					"from": "$mainModel.User.events.save",
+					"userDefined": true
+				}
+			],
+			"methods": [
+				{
+					"name": "addUser",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.User.methods.addUser",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
+					"name": "getChanges",
+					"applyTo": "entity",
+					"scope": "publicOnServer",
+					"from": "$mainModel.User.entityMethods.getChanges",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
+					"name": "modifyPassword",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.User.methods.modifyPassword",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				},
+				{
+					"name": "validatePassword",
+					"applyTo": "entity",
+					"scope": "publicOnServer",
+					"from": "$mainModel.User.entityMethods.validatePassword",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				}
+			]
+		},
+		{
+			"name": "UserTodoAssign",
+			"className": "UserTodoAssign",
+			"collectionName": "UserTodoAssigns",
+			"scope": "public",
+			"extends": "User",
+			"attributes": [
+				{
+					"name": "assignedTodos",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "TodoUsers",
+					"reversePath": true,
+					"path": "userAssigned"
+				},
+				{
+					"name": "todos",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "Todos",
+					"path": "assignedTodos.todoAssigned"
+				}
+			],
+			"methods": [
+				{
+					"name": "getTodos",
+					"applyTo": "entity",
+					"scope": "public",
+					"from": "$mainModel.UserTodoAssign.entityMethods.getTodos",
+					"allowedOnHTTPGET": false,
+					"userDefined": true
+				}
+			]
+		}
+	],
+	"type": []
+}

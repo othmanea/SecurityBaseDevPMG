@@ -1,0 +1,31 @@
+<mat-card class="card-login">
+
+  <mat-card-title>
+    Log In
+  </mat-card-title>
+  
+  <mat-card-content>
+    <form  #form="ngForm" class="login-container">
+      <mat-form-field>
+        <input name="username" required matInput [(ngModel)]="username" placeholder="Your email">
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input name="password" required matInput [(ngModel)]="password" type="password" placeholder="Password">
+      </mat-form-field>
+    
+      <button class="button-login" mat-raised-button color="primary" type="submit" (click)="login(username, password)" [disabled]="form.invalid">
+        Login
+      </button>
+      <mat-divider></mat-divider>
+      <button class="button-login" mat-raised-button color="primary" type="submit" (click)="register()">
+        Register
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button type="submit" (click)="backhome()" ><mat-icon>cancel_presentation</mat-icon></button>
+    </form>
+  </mat-card-content>
+  
+</mat-card>
+  
+

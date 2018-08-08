@@ -1,0 +1,94 @@
+# OS X
+*.DS_Store
+._*
+# Wakanda data
+*.waData
+# Wakanda preferences
+*.waPreferences
+# Wakanda log
+*.waLog
+*/Logs
+studio_log*
+# Wakanda code symbols
+*.waSym
+*.waSymData
+# Wakanda index
+*.waIndex
+*.waIndx
+*.Match
+# Wakanda User and Group cache
+*.cacheUAG
+# Wakanda breakpoints
+breakpoints.json
+# Wakanda session ID cache
+sessionID.json
+# Wakanda backup
+*.waBackup
+# Wakanda Remote Model Cache
+*.waRemoteModel
+# Extensions user local preferences
+ExtensionSettings/
+
+# temporary files
+*.swp
+*.swo
+
+# mobile
+*/mobile/.sass-cache
+*/mobile/plugins
+
+# mobile/web 
+node_modules/
+*.log
+
+# Wakanda local files
+*/.wakanda/hashes.json
+.wakanda-backup/
+*.txt
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+*.WakTDef
+*.WakTDef
+*.WakTDef
+*.txt
+*.WakTDef
+*.txt

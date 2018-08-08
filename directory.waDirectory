@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><directory>
+	<user ID="C84279B32ED6434599FF1D7B33A21442" name="admin" fullName="ADMIN" password="003b744708c16733d1eb3371bec208fd"/>
+	<user ID="41C89912B00440B3BF0A1C5E4479BFEA" name="jcm" fullName="JCM" password="b883930011b8525ab5e37d83466696a3"/>
+	<user ID="7BCF0132A40241A49106364FA28C599B" name="super" fullName="SUPER-USER" password="fef4c1417d047c58ad4aa8336bb9ca19"/>
+	<group ID="01000000000000000000000000000000" name="Admin">
+		<include group="Super" groupID="4BF8C9B5398E48D2BD6F5868707C3BC7"/>
+		<include user="admin" ID="C84279B32ED6434599FF1D7B33A21442"/>
+	</group>
+	<group ID="72F0232D89BC4874A58F57142DD52493" name="TodosPage">
+		<include group="BasicUsers" groupID="A18C7E7C2348485CAD3F09D882954DE4"/>
+	</group>
+	<group ID="C0013F2A0ADD4D789C90999B3CD1C0C5" name="UsersPage">
+		<include group="Admin" groupID="01000000000000000000000000000000"/>
+	</group>
+	<group ID="4BF8C9B5398E48D2BD6F5868707C3BC7" name="Super">
+		<include user="super" ID="7BCF0132A40241A49106364FA28C599B"/>
+	</group>
+	<group ID="849B240CBFF94060AC717C3EA8FE118D" name="usersTodo">
+		<include group="Admin" groupID="01000000000000000000000000000000"/>
+	</group>
+	<group ID="A18C7E7C2348485CAD3F09D882954DE4" name="BasicUsers">
+		<include user="jcm" ID="41C89912B00440B3BF0A1C5E4479BFEA"/>
+		<include group="Admin" groupID="01000000000000000000000000000000"/>
+	</group>
+</directory>

@@ -1,0 +1,49 @@
+mat-row:hover,
+mat-row.selected{
+  background-color: #f1f1f1;
+}
+
+mat-row{
+  cursor: pointer;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.maincardspace {
+  min-height: 800px;
+}
+
+.firstcardspace {
+  min-height: 700px;
+}
+mat-card-title,
+mat-input-container{
+  text-align: center;
+}
+
+mat-card-title>mat-input-container{
+  width: 600px;
+}
+
+.app-sidenav-filler {
+  flex: 1 1 auto;
+}
+mat-drawer {
+  min-width: 500px;
+  min-height: 600px;
+}
+
+.content-Card {
+ min-height: 800px;
+}
+
+.userlist {
+  min-height: 400px;
+ }
+
+ mat-chip {
+  max-width: 100px;
+  max-height: 20px;
+}

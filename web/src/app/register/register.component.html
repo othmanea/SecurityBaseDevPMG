@@ -1,0 +1,14 @@
+<mat-card class="card-register">
+	<mat-card-title>
+			Register form
+	</mat-card-title>
+	<mat-card-content>
+			<app-signup [user]="user" (onSignup)="register($event)"></app-signup>
+	</mat-card-content>
+	<mat-card-actions>
+			<button mat-button (click)="login()">
+					Login
+			</button>
+			<button mat-button (click)="backhome()" ><mat-icon>cancel_presentation</mat-icon></button>
+	</mat-card-actions>
+</mat-card>

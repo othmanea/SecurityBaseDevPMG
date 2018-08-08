@@ -1,0 +1,52 @@
+<mat-sidenav-container fullscreen >
+  <mat-sidenav #sidenav mode="side">
+    <mat-nav-list>
+      <button mat-button routerLink="home" >
+        <mat-icon>home</mat-icon>
+        Home
+      </button>
+      <button mat-button [routerLink]="['/todos']" *ngIf="canSeeTodosMenu" >
+        <mat-icon>list</mat-icon>
+        Todos
+      </button>
+      <button mat-button [routerLink]="['/users']" *ngIf="canSeeUsersMenu">
+        <mat-icon>supervisor_account</mat-icon>
+        Users
+      </button>
+      <button mat-button routerLink="documents">
+        <mat-icon>folder</mat-icon>
+       Documents
+      </button>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar color="primary" class="mat-elevation-z2">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Secrurity Base Developement</span>
+    <span class="app-toolbar-filler"></span>
+    <!--  <span>{{ (sessionInfo | async)?.user.fullName }}</span> -->
+    <button mat-icon-button *ngIf="currentUser" (click)="logout()" >
+      <mat-icon>lock_open</mat-icon>
+    </button>
+    <span *ngIf="currentUser" (click)= "logout()">
+      logged as {{currentUser.fullName}}
+    </span>
+    <button *ngIf="!currentUser" mat-icon-button routerLink="login" >
+      <mat-icon>lock</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="submenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #submenu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </mat-toolbar>
+  <div class="app-content">
+      <app-breadcrump> [model]="items" </app-breadcrump>
+    <router-outlet></router-outlet>
+  </div>
+  
+</mat-sidenav-container>

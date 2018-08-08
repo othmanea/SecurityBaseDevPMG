@@ -1,0 +1,128 @@
+<mat-card *ngIf="current">
+    <mat-card-title>
+      Details of the todo
+        <mat-card-subtitle>
+          <h6>ID of the todo "{{current?.ID}}"</h6>
+        </mat-card-subtitle>
+        <mat-card-content>
+                <mat-form-field>
+                  <input  matInput placeholder="Description"
+                          type="text" [(ngModel)]="current.description"
+                          [disabled]="!editable">
+                </mat-form-field>
+                <mat-checkbox [(ngModel)]="current.done" [disabled]="!editable"></mat-checkbox>
+                <mat-checkbox [(ngModel)]="current.public" [disabled]="!editable"></mat-checkbox>
+  <br />  
+                <mat-form-field *ngIf="current.mainTodo">
+                  <input  matInput placeholder="Main Todo"
+                          type="text" [(ngModel)]="current.mainTodo.description"
+                          [disabled]="!editable">
+                          <ng-template #noDefined>
+
+                          </ng-template>
+                </mat-form-field>
+  <br />
+  
+    <mat-form-field>
+      <mat-select placeholder="Todo Type" [disabled]="!editable" [(ngModel)]="selectedTypeTodo" (selectionChange)="setType(current, $event.value)">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{ type.choiceDescription }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+  <br />
+  
+    <button class="button btn primary" [disabled]="!editable" (click)="makeMain(currentTodoList, current)">
+      Affecter la todo comme main todo
+    </button>
+  <mat-card>
+    <mat-card-title>
+      Users
+    </mat-card-title>
+    <mat-card-content>
+      <mat-list> 
+        <ng-container *ngIf="users">
+          <mat-list-item *ngFor="let user of users">
+            <mat-icon mat-list-icon>person</mat-icon>
+            <h4 mat-line>{{user.fullName}}</h4>
+            <p mat-line> {{user.email}} </p>
+          </mat-list-item>
+        </ng-container>
+    </mat-list>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+    <mat-card-title>
+      Select the main todo
+    </mat-card-title>
+    <mat-card-content>
+      <div class="row" style="margin-top:20px;">
+        <div class="col-md-12">
+          <mat-table  #todoList1 [dataSource]="todos1">
+            <ng-container matColumnDef="done">
+              <mat-header-cell *matHeaderCellDef>Done</mat-header-cell>
+              <mat-cell *matCellDef="let one">
+                <mat-checkbox [checked]="one.done" [disabled]="true"></mat-checkbox>
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="public">
+              <mat-header-cell *matHeaderCellDef>Done</mat-header-cell>
+              <mat-cell *matCellDef="let one">
+                <mat-checkbox [checked]="one.publice" [disabled]="true"></mat-checkbox>
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="description">
+              <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+              <mat-cell *matCellDef="let one">{{one.description}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="tools">
+              <mat-header-cell *matHeaderCellDef>Tools</mat-header-cell>
+              <mat-cell *matCellDef="let one">
+                  <button mat-button (click)="makeMain(one, current)">
+                    <mat-icon>done</mat-icon>
+                  </button>
+              </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="todoCols1"></mat-header-row>
+            <mat-row (click)="currentTodoList = row" [class.selected]="currentTodoList && row.ID === currentTodoList.ID"
+                 *matRowDef="let row; columns: todoCols1;"></mat-row>
+          </mat-table>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
+          <mat-card-actions>
+              <button mat-button *ngIf="!editable" (click)="editable=!editable">
+                  <mat-icon>edit</mat-icon>
+                  Edit
+                </button>
+                <button mat-button *ngIf="editable" (click)="save(current)">
+                  <mat-icon>save</mat-icon>
+                  Save
+                </button>
+                <button mat-button (click)="remove(current)">
+                  <mat-icon>delete</mat-icon>
+                  Remove
+                </button>
+                <button mat-button *ngIf="editable" (click) = "cancel()">
+                  <mat-icon>cancel</mat-icon>
+                  Cancel
+                </button>
+                <button mat-button routerLink="/todos">
+                  <mat-icon>list</mat-icon>
+                  Go to list
+                </button>
+          </mat-card-actions>
+          <mat-card-footer>
+              <mat-form-field>
+                  <input matInput placeholder="ID" type="text" disabled [value]="current?.ID">
+                </mat-form-field>
+  
+          </mat-card-footer>
+        </mat-card-content>
+  
+    </mat-card-title>
+  </mat-card>
+  

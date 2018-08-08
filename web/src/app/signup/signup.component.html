@@ -1,0 +1,24 @@
+<form #form="ngForm" class="signup-container" (ngSubmit)="onSignup.emit(user)">
+  <div *ngIf="errorMsg" class="alert alert-danger alert-dismissable">
+    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+    {{errorMsg}}
+  </div>
+  <mat-form-field>
+    <input #fullname="ngModel" name="fullname" required matInput [(ngModel)]="user.fullName" placeholder="Fullname">
+  </mat-form-field>
+  <mat-form-field>
+    <input name="email" type="email" required matInput [(ngModel)]="user.email" placeholder="email">
+  </mat-form-field>
+  <mat-form-field>
+    <input name="password" required matInput [(ngModel)]="user.password" type="password" placeholder="Password">
+  </mat-form-field>
+  <mat-form-field>
+    <input name="verifypassword" required matInput [(ngModel)]="user.verifyPassword" type="password" placeholder=" Verify Password">
+  </mat-form-field>
+  <div class="form-group">
+    <div class="checkbox i-checks"><label> <input required name="check" [(ngModel)]="check" type="checkbox"><i></i> Agree the terms and policy </label></div>
+  </div>
+  <button mat-button type="submit" [disabled]="form.invalid">
+    Register
+  </button>
+</form>
