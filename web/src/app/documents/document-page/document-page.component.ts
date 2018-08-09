@@ -18,5 +18,16 @@ export class DocumentPageComponent implements OnInit {
   ngOnInit() {
     this.display = true;
   }
+saveDoc() {}
+
+deleteDoc() {}
+
+firstSelectedDoc() {}
+
+lastSelectedDoc() {}
+
+previusSelectedDoc() {}
+
+nextSelectedDoc() {}
 
 }
