@@ -21,9 +21,7 @@
               "src/issepicon.ico"
             ],
             "styles": [
-              {
-                "input": "node_modules/font-awesome/css/font-awesome.css"
-              },
+              
               "src/styles.css",
               "src/theme.scss",
               "node_modules/primeicons/primeicons.css",
