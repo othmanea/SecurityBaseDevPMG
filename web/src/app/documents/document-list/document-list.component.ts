@@ -22,8 +22,8 @@ export class DocumentListComponent implements OnInit {
   selectedDoc: IDocument;
   selectedDocs: IDocument[];
   newDoc: boolean = false;
-  editDoc:boolean = false;
-  deleteDoc:boolean = false;
+  editDoc: boolean = false;
+  deleteDoc: boolean = false;
 
   items: MenuItem[];
 
