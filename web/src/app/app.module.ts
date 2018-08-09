@@ -39,8 +39,6 @@ import { RegisterService} from './register/register.service';
 import { AuthenticationService } from './shared/authentication.service';
 import {DocumentService} from './shared/document.service';
 import { BreadcrumbService } from './primeng/breadcrump/breadcrumb.service';
-
-import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { BreadcrumpComponent } from './primeng/breadcrump/breadcrump.component';
 
 
@@ -74,7 +72,6 @@ import { BreadcrumpComponent } from './primeng/breadcrump/breadcrump.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
-    AngularFileUploaderModule,
     APP_ROUTING
   ],
   entryComponents: [ConfirmComponent],

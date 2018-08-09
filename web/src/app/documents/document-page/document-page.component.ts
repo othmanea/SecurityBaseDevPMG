@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { IDocument } from '../../shared/interfaces';
+import { DocumentService } from '../../shared/document.service';
 
 @Component({
   selector: 'app-document-page',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./document-page.component.css']
 })
 export class DocumentPageComponent implements OnInit {
+ @Input() doc: IDocument;
+  display: boolean;
 
-  constructor() { }
+  constructor(
+    private documentService: DocumentService
+  ) { }
 
   ngOnInit() {
+    this.display = true;
   }
 
 }

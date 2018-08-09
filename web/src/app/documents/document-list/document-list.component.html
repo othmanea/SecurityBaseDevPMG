@@ -10,8 +10,8 @@
                             <div class="ui-toolbar-group-left">
                                 <button pButton type="button" label="Add" icon="fa fa-plus" (click)="addNewDoc" ></button>
                                 <button pButton type="button" label="Vue" icon="fa fa-eye" class="ui-button-success" (click)="viewSelectedDoc" ></button>
-                                <button pButton type="button" label="Edit" [disabled]="!editDoc" icon="far fa-edit" class="ui-button-warning" (click)="editSelectedDocs"></button>
-                                <button pButton type="button" label="Print" icon="far fa-print" class="ui-button-info" (click)="editSelectedDocs"></button>
+                                <button pButton type="button" label="Edit" [disabled]="!editDoc"  icon="far fa-edit" class="ui-button-warning" (click)="editSelectedDocs"></button>
+                                <button pButton type="button" label="Print" icon="fa fa-print" class="ui-button-info" (click)="printSelectedDocs"></button>
                                     
                                 <i class="pi pi-bars"></i>
 
@@ -59,9 +59,10 @@
                         </td>
                         <td *ngFor="let col of columns">
                         {{rowData[col.field]}}
-                        </td>
+                        </td>               
                     </tr>
                 </ng-template>
+               
                 <ng-template pTemplate="summary">
                     <span>
                         Il y a {{docs?.length}} documents.
