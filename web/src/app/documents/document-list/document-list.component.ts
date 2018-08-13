@@ -5,6 +5,7 @@ import { MenuItem } from 'primeng/primeng';
 
 import { IDocument } from '../../shared/interfaces';
 import { DocumentService } from '../../shared/document.service';
+import { Observable } from 'rxjs';
 // import { TableModule } from '../../shared/sharedModules/primeNG.modules';
 // import { TableModule } from 'primeng/table';
 
@@ -20,12 +21,16 @@ export class DocumentListComponent implements OnInit {
   cols: any[];
   first = 0;
   selectedDoc: IDocument;
-  selectedDocs: IDocument[];
-  newDoc: boolean = false;
-  editDoc: boolean = false;
-  deleteDoc: boolean = false;
+  selectedDocs: IDocument[] = [];
+  newDoc = false;
+  editDoc = false;
+  deleteDoc = false;
 
   items: MenuItem[];
+
+  display = false;
+  doc$: Observable<IDocument>;
+  editMode = false;
 
   constructor(
     private breadcrumbService: BreadcrumbService,
@@ -39,21 +44,28 @@ export class DocumentListComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.doc$ = this.documentService.current;
+
     this.cols = [
       { field: 'docTitle', header: 'Titre' },
       { field: 'docCode', header: 'Réf.' },
       { field: 'ID', header: 'ID' },
-  ];
-  this.items = [
-    {label: 'All Data', icon: 'fas fa-file', command: () => {
-      //this.exportCSV(); 
-       //"dt.exportCSV()"
-      // this.update();
-    }},
-    {label: 'Selected data only', icon: 'far fa-file', command: () => {
-        // dt.exportCSV({selectionOnly:true})
-    }}
-];
+    ];
+    this.items = [
+      {
+        label: 'All Data', icon: 'fas fa-file', command: () => {
+          // this.exportCSV();
+          // "dt.exportCSV()"
+          // this.update();
+        }
+      },
+      {
+        label: 'Selected data only', icon: 'far fa-file', command: () => {
+          // dt.exportCSV({selectionOnly:true})
+        }
+      }
+    ];
 
   }
   private setData(d: {
@@ -63,11 +75,29 @@ export class DocumentListComponent implements OnInit {
     this.docs = d.list;
     this.countDoc = d.count;
   }
+
   reset() {
     this.first = 0;
   }
+
   async refresh() {
     const result = await this.documentService.getAll();
     this.setData(result);
   }
+
+  viewSelectedDocs() {
+    this.documentService.documents = this.selectedDocs;
+    this.display = true;
+  }
+
+  addNewDoc() {
+  }
+
+  editSelectedDocs() {
+  }
+
+  printSelectedDocs() {}
+
+  deleteSelectedDocs() {}
+
 }

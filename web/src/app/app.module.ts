@@ -82,7 +82,7 @@ import { BreadcrumpComponent } from './primeng/breadcrump/breadcrump.component';
     UserService,
     RegisterService,
     AuthenticationService,
-    DocumentService,
+    // DocumentService,
     BreadcrumbService
   ],
   bootstrap: [AppComponent]

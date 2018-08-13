@@ -8,10 +8,13 @@
                     Liste de Documents
                     <p-toolbar>
                             <div class="ui-toolbar-group-left">
-                                <button pButton type="button" label="Add" icon="fa fa-plus" (click)="addNewDoc" ></button>
-                                <button pButton type="button" label="Vue" icon="fa fa-eye" class="ui-button-success" (click)="viewSelectedDoc" ></button>
-                                <button pButton type="button" label="Edit" [disabled]="!editDoc"  icon="far fa-edit" class="ui-button-warning" (click)="editSelectedDocs"></button>
-                                <button pButton type="button" label="Print" icon="fa fa-print" class="ui-button-info" (click)="printSelectedDocs"></button>
+                                <button pButton type="button" label="Add" icon="fa fa-plus" (click)="addNewDoc()" ></button>
+                                <button 
+                                    pButton type="button" label="Vue" icon="fa fa-eye" class="ui-button-success" (click)="viewSelectedDocs()" 
+                                    [disabled]="selectedDocs.length === 0">
+                                </button>
+                                <button pButton type="button" label="Edit" [disabled]="!editDoc"  icon="far fa-edit" class="ui-button-warning" (click)="editSelectedDocs()"></button>
+                                <button pButton type="button" label="Print" icon="fa fa-print" class="ui-button-info" (click)="printSelectedDocs()"></button>
                                     
                                 <i class="pi pi-bars"></i>
 
@@ -27,7 +30,7 @@
                             </div>
                             
                             <div class="ui-toolbar-group-right">    
-                                <button pButton type="button" label="Delete" [disabled]="!deleteDoc" icon="far fa-trash-alt" Class="ui-button-danger" (click)="deleteSelectedDocs"></button>
+                                <button pButton type="button" label="Delete" [disabled]="!deleteDoc" icon="far fa-trash-alt" Class="ui-button-danger" (click)="deleteSelectedDocs()"></button>
                             </div>
                         </p-toolbar>
                 </ng-template>
@@ -83,6 +86,7 @@
                 </p-table>
             </div>
             
+            <app-document-page [(display)]=display [doc$]="doc$" [(edit)]="editMode"></app-document-page>
         </div>
     </div>
 </div>
