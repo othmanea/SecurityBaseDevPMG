@@ -42,7 +42,6 @@
     "rxjs": "^6.2.2",
     "wakanda-client": "^2.0.0",
     "zone.js": "^0.8.26"
-    
   },
   "devDependencies": {
     "@angular/cli": "6.1.2",
