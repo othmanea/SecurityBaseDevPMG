@@ -12,7 +12,7 @@ export class DocumentService {
 
 
   constructor(
-    private wakanda: WakandaService
+    private wakandaService: WakandaService
   ) {
 
   }
@@ -90,7 +90,7 @@ export class DocumentService {
   }
 
   async getClass() {
-    const ds = await this.wakanda.catalog;
+    const ds = await this.wakandaService.catalog;
     return ds.Document;
   }
 

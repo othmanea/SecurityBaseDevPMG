@@ -6,6 +6,7 @@ import { MenuItem } from 'primeng/primeng';
 import { IDocument } from '../../shared/interfaces';
 import { DocumentService } from '../../shared/document.service';
 import { Observable } from 'rxjs';
+
 // import { TableModule } from '../../shared/sharedModules/primeNG.modules';
 // import { TableModule } from 'primeng/table';
 
@@ -40,6 +41,7 @@ export class DocumentListComponent implements OnInit {
     this.breadcrumbService.setItems([
       { label: 'Documents', routerLink: ['/documents'] }
     ]);
+    
     this.refresh();
   }
 

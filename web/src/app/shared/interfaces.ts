@@ -36,10 +36,10 @@ export interface ITodoType {
   choiceDescription: string;
   choiceCategory: string;
   _key?: string;
-  todoTyped:{
-    entities:ITodo[];
+  todoTyped: {
+    entities: ITodo[];
     fetch(): Promise<ITodo[]>;
-  } 
+  };
 }
 
 export interface IDocument {

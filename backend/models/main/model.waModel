@@ -51,7 +51,7 @@
 				"panelColor": "#D88CFF",
 				"panel": {
 					"isOpen": "true",
-					"pathVisible": false,
+					"pathVisible": true,
 					"position": {
 						"X": 43,
 						"Y": 723
@@ -75,8 +75,8 @@
 					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
-						"X": 402,
-						"Y": 482
+						"X": 379,
+						"Y": 488
 					}
 				}
 			},
@@ -116,8 +116,8 @@
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 0,
-			"workspaceTop": 879,
+			"workspaceLeft": 2,
+			"workspaceTop": 836,
 			"lastScriptLocation": {
 				"User": {
 					"method": "User/User-methods.js",
@@ -230,10 +230,11 @@
 					"name": "ID",
 					"kind": "storage",
 					"scope": "public",
-					"unique": true,
+					"type": "uuid",
+					"primKey": true,
 					"autosequence": true,
-					"type": "long",
-					"primKey": true
+					"unique": true,
+					"autogenerate": true
 				},
 				{
 					"name": "choiceCategory",
@@ -305,9 +306,9 @@
 					"scope": "public",
 					"unique": true,
 					"autosequence": true,
+					"autogenerate": true,
 					"type": "uuid",
-					"primKey": true,
-					"autogenerate": true
+					"primKey": true
 				},
 				{
 					"name": "serverDocAddress",
@@ -336,9 +337,9 @@
 					"scope": "public",
 					"unique": true,
 					"autosequence": true,
+					"autogenerate": true,
 					"type": "uuid",
-					"primKey": true,
-					"autogenerate": true
+					"primKey": true
 				},
 				{
 					"name": "docTitle",
