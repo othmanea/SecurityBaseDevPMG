@@ -26,7 +26,12 @@ export class DocumentPageComponent implements OnInit, OnDestroy {
   @Output()
   displayChange = new EventEmitter<boolean>();
 
+  @Output()
+  refresh = new EventEmitter();
+
   doc: IDocument;
+  model: IDocument;
+
   docSub: Subscription;
 
   constructor(
@@ -35,7 +40,11 @@ export class DocumentPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.docSub = this.doc$.subscribe(
-      doc => this.doc = doc
+      (doc) => {
+        const { ID, docCode, docTitle, docCategory, docFile } = doc;
+        this.model = { ID, docCode, docTitle, docCategory, docFile };
+        this.doc = doc;
+      }
     );
   }
 
@@ -43,7 +52,20 @@ export class DocumentPageComponent implements OnInit, OnDestroy {
     this.docSub.unsubscribe();
   }
 
-  saveDoc() {
+  async saveDoc() {
+    try {
+      const res = await this.documentService.saveDoc(this.model);
+      // Do this so we change the object watched by angular reflecting changes in the table
+      const { docCode, docTitle, docCategory, docFile } = res;
+      this.doc.docCode = docCode;
+      this.doc.docCategory = docCategory;
+      this.doc.docTitle = docTitle;
+      this.doc.docFile = docFile;
+    } catch (err) {
+      console.log(err);
+      // Reset the model on error
+      this.model = { ...this.doc };
+    }
     this.editChange.emit(false);
   }
 
@@ -51,7 +73,11 @@ export class DocumentPageComponent implements OnInit, OnDestroy {
     this.editChange.emit(true);
   }
 
-  deleteDoc() {}
+  async deleteDoc() {
+    const res = await this.documentService.deleteDoc(this.doc);
+    this.nextSelectedDoc();
+    this.refresh.emit();
+  }
 
   firstSelectedDoc() {}
 

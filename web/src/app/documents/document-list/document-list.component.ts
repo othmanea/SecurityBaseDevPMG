@@ -30,6 +30,7 @@ export class DocumentListComponent implements OnInit {
 
   display = false;
   doc$: Observable<IDocument>;
+  entity$: Observable<any>;
   editMode = false;
 
   constructor(
@@ -46,6 +47,11 @@ export class DocumentListComponent implements OnInit {
   ngOnInit() {
 
     this.doc$ = this.documentService.current;
+    this.entity$ = this.documentService.entity;
+
+    this.entity$.subscribe(
+      ent => console.log(ent)
+    );
 
     this.cols = [
       { field: 'docTitle', header: 'Titre' },
@@ -73,6 +79,7 @@ export class DocumentListComponent implements OnInit {
     count: number;
   }) {
     this.docs = d.list;
+    this.selectedDocs = this.docs.filter(doc => this.selectedDocs.find(sel => sel.ID === doc.ID));
     this.countDoc = d.count;
   }
 

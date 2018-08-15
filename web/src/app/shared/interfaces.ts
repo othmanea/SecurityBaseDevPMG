@@ -4,12 +4,12 @@ export interface ITodo {
   done: boolean;
   _key?: string;
   type: ITodoType;
-  users?:{
+  users?: {
     entities: IUser[];
     fetch(): Promise<IUser[]>;
   };
-  subTodos? :ITodo[];
-  mainTodo? : ITodo;
+  subTodos?: ITodo[];
+  mainTodo?: ITodo;
   save(): void;
   delete(): void;
   removeTodo(): void;
@@ -36,10 +36,10 @@ export interface ITodoType {
   choiceDescription: string;
   choiceCategory: string;
   _key?: string;
-  todoTyped:{
-    entities:ITodo[];
+  todoTyped: {
+    entities: ITodo[];
     fetch(): Promise<ITodo[]>;
-  } 
+  };
 }
 
 export interface IDocument {
