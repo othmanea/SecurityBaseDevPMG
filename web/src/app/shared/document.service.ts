@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { WakandaService } from './wakanda.service';
 import { IDocument } from './interfaces';
 import { BehaviorSubject, Observable, combineLatest, Subject } from 'rxjs';
-import { map, switchMap, startWith } from 'rxjs/operators';
+import { map, switchMap, startWith, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -14,7 +14,10 @@ export class DocumentService {
   constructor(
     private wakandaService: WakandaService
   ) {
-
+    this.current$ = new BehaviorSubject<IDocument>({ ID: '', docCategory: 'default', docCode: 'default', docTitle: 'default' });
+    // this.current$.subscribe(
+    //   doc => this.findById(doc.ID)
+    // );
   }
 
   // _selectedDocs: IDocument[];
@@ -67,12 +70,17 @@ export class DocumentService {
   _documents: IDocument[];
   _index: number;
 
-  current$ = new BehaviorSubject<IDocument>({ ID: '', docCategory: 'default', docCode: 'default', docTitle: 'default'});
+  current$: BehaviorSubject<IDocument>;
+  entity$ = new BehaviorSubject<any>({});
 
   set documents(docs: IDocument[]) {
     this._index = 0;
     this._documents = docs;
     this.current$.next(this._documents[this._index]);
+  }
+
+  get entity() {
+    return this.entity$.asObservable();
   }
 
   get current(): Observable<IDocument> {
@@ -101,19 +109,40 @@ export class DocumentService {
     params?: (string)[];
     orderBy?: string
   } = {
-    pageSize: 100,
-    start: 0
-  }): Promise<{
-        list: IDocument[];
-        count: number;
-      }> {
-     const Document = await this.getClass();
-     const res = await Document.query(opts);
+      pageSize: 100,
+      start: 0
+    }): Promise<{
+      list: IDocument[];
+      count: number;
+    }> {
+    const Document = await this.getClass();
+    const res = await Document.query(opts);
 
-     return {
-       list: res.entities,
-       count: res._count
-     };
+    return {
+      list: res.entities,
+      count: res._count
+    };
+  }
+
+  async saveDoc(doc: IDocument) {
+    const entity = await this.findById(doc.ID);
+    entity.docTitle = doc.docTitle;
+    entity.docCode = doc.docCode;
+    const res = await entity.save();
+    return res;
+  }
+
+  async deleteDoc(doc: IDocument) {
+    const entity = await this.findById(doc.ID);
+    const res = await entity.delete();
+    return res;
+  }
+
+  async findById(ID: string) {
+    const documentClass = await this.getClass();
+    const entity = await documentClass.find(ID);
+    // this.entity$.next(entity);
+    return entity;
   }
 
 }

@@ -4,12 +4,12 @@ export interface ITodo {
   done: boolean;
   _key?: string;
   type: ITodoType;
-  users?:{
+  users?: {
     entities: IUser[];
     fetch(): Promise<IUser[]>;
   };
-  subTodos? :ITodo[];
-  mainTodo? : ITodo;
+  subTodos?: ITodo[];
+  mainTodo?: ITodo;
   save(): void;
   delete(): void;
   removeTodo(): void;
