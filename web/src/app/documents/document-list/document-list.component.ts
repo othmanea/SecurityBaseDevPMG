@@ -42,7 +42,7 @@ export class DocumentListComponent implements OnInit {
     this.breadcrumbService.setItems([
       { label: 'Documents', routerLink: ['/documents'] }
     ]);
-    
+
     this.refresh();
   }
 
