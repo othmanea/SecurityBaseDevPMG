@@ -49,11 +49,11 @@ export class DocumentListComponent implements OnInit {
   ngOnInit() {
 
     this.doc$ = this.documentService.current;
-    this.entity$ = this.documentService.entity;
+  //  this.entity$ = this.documentService.entity;
 
-    this.entity$.subscribe(
-      ent => console.log(ent)
-    );
+    // this.entity$.subscribe(
+    //   ent => console.log(ent)
+    // );
 
     this.cols = [
       { field: 'docTitle', header: 'Titre' },

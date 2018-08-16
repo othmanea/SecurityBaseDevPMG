@@ -14,7 +14,7 @@ export class DocumentService {
   constructor(
     private wakandaService: WakandaService
   ) {
-    this.current$ = new BehaviorSubject<IDocument>({ ID: '', docCategory: 'default', docCode: 'default', docTitle: 'default' });
+    this.current$ = new BehaviorSubject<IDocument>({ ID: '', docCategory: 'default', docCode: 'default', docTitle: 'default', docRecordDate: 'default'});
     // this.current$.subscribe(
     //   doc => this.findById(doc.ID)
     // );
@@ -71,7 +71,7 @@ export class DocumentService {
   _index: number;
 
   current$: BehaviorSubject<IDocument>;
-  entity$ = new BehaviorSubject<any>({});
+  // entity$ = new BehaviorSubject<IDocument>({ ID: '', docCategory: 'default', docCode: 'default', docTitle: 'default', docRecordDate: 'default'});
 
   set documents(docs: IDocument[]) {
     this._index = 0;
@@ -79,9 +79,9 @@ export class DocumentService {
     this.current$.next(this._documents[this._index]);
   }
 
-  get entity() {
-    return this.entity$.asObservable();
-  }
+  // get entity() {
+  //   return this.entity$.asObservable();
+  // }
 
   get current(): Observable<IDocument> {
     return this.current$.asObservable();
@@ -94,6 +94,16 @@ export class DocumentService {
 
   next() {
     this._index = (this._index + 1) % this._documents.length;
+    this.current$.next(this._documents[this._index]);
+  }
+
+  last() {
+    this._index = this._documents.length - 1;
+    this.current$.next(this._documents[this._index]);
+  }
+
+  first() {
+    this._index = 0;
     this.current$.next(this._documents[this._index]);
   }
 

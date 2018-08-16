@@ -79,9 +79,13 @@ export class DocumentPageComponent implements OnInit, OnDestroy {
     this.refresh.emit();
   }
 
-  firstSelectedDoc() {}
+  firstSelectedDoc() {
+    this.documentService.first();
+  }
 
-  lastSelectedDoc() {}
+  lastSelectedDoc() {
+    this.documentService.last();
+  }
 
   previousSelectedDoc() {
     this.documentService.previous();
