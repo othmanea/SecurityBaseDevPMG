@@ -86,7 +86,10 @@
                 </p-table>
             </div>
             
-            <app-document-page (display)="display" [display]="display && selectedDocs.length !== 0" [doc$]="doc$" [(edit)]="editMode" (refresh)="refresh()"></app-document-page>
+            <app-document-page 
+                (displayChange)="displayChange($event)" 
+                [display]="display && selectedDocs.length !== 0" [doc$]="doc$" [(edit)]="editMode" (refresh)="refresh()">
+            </app-document-page>
         </div>
     </div>
 </div>

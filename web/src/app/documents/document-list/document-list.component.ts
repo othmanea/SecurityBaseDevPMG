@@ -99,6 +99,10 @@ export class DocumentListComponent implements OnInit {
     this.display = true;
   }
 
+  displayChange($event: boolean) {
+    this.display = $event;
+  }
+
   addNewDoc() {
   }
 
