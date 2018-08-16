@@ -48,4 +48,5 @@ export interface IDocument {
   docTitle: string;
   docCategory: string;
   docFile?: string;
+  docRecordDate?: string;
 }
