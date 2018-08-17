@@ -7,9 +7,6 @@ import { IDocument } from '../../shared/interfaces';
 import { DocumentService } from '../../shared/document.service';
 import { Observable } from 'rxjs';
 
-// import { TableModule } from '../../shared/sharedModules/primeNG.modules';
-// import { TableModule } from 'primeng/table';
-
 @Component({
   selector: 'app-document-list',
   templateUrl: './document-list.component.html',
@@ -31,7 +28,7 @@ export class DocumentListComponent implements OnInit {
 
   display = false;
   doc$: Observable<IDocument>;
-  entity$: Observable<any>;
+
   editMode = false;
 
   constructor(
@@ -49,11 +46,6 @@ export class DocumentListComponent implements OnInit {
   ngOnInit() {
 
     this.doc$ = this.documentService.current;
-  //  this.entity$ = this.documentService.entity;
-
-    // this.entity$.subscribe(
-    //   ent => console.log(ent)
-    // );
 
     this.cols = [
       { field: 'docTitle', header: 'Titre' },

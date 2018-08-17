@@ -3,7 +3,7 @@
         <div class="ui-g-12">
             <div class="card">
                 <div class="ui-g-12">
-                    <p-table #dt [columns]="cols" [value]="docs" [paginator]="true" [rows]="10" 
+                    <p-table #dt [columns]="cols" [value]="docs" [paginator]="true" [rows]="10" selectionMode="multiple"
                         [(selection)]="selectedDocs" dataKey="ID" sortMode="multiple">
                     <ng-template pTemplate="caption">
                         Liste de Documents
@@ -37,7 +37,7 @@
                     </ng-template>
                     <ng-template pTemplate="header" let-columns >
                         <tr>
-                            <th style="width: 2.25em">
+                            <th style="width: 4em">
                                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                             </th>
                             <th *ngFor="let col of columns" [pSortableColumn]="col.field">

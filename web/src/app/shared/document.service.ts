@@ -14,74 +14,21 @@ export class DocumentService {
   constructor(
     private wakandaService: WakandaService
   ) {
-    this.current$ = new BehaviorSubject<IDocument>({ ID: '', docCategory: 'default', docCode: 'default', docTitle: 'default', docRecordDate: 'default'});
-    // this.current$.subscribe(
-    //   doc => this.findById(doc.ID)
-    // );
+    this.current$ = new BehaviorSubject<IDocument>(
+      { ID: '', docCategory: 'default', docCode: 'default', docTitle: 'default', docRecordDate: 'default'}
+    );
   }
-
-  // _selectedDocs: IDocument[];
-  // _currentIndex: number;
-
-  // _move$ = new Subject<string>();
-  // _selectedDocs$ = new BehaviorSubject<IDocument[]>([]);
-
-  // _size$ = this._selectedDocs$.pipe(
-  //   map((docs: IDocument[]) => docs.length)
-  // );
-
-  // _currentIndex$: Observable<number> = combineLatest(
-  //   this._currentIndex$,
-  //   this._size$,
-  //   this._move$.asObservable(),
-  // ).pipe(
-  //   map(([i, sz, dir]) => dir === 'PREV' ? ((i - 1) + sz) % sz : (i + 1) % sz)
-  // ).pipe(
-  //   startWith(0)
-  // );
-
-  // previousDoc() {
-  //   this._move$.next('PREV');
-  // }
-
-  // nextDoc() {
-  //   this._move$.next('NEXT');
-  // }
-
-  // setSelectedDocs(docs: IDocument[]) {
-  //   this._selectedDocs = docs;
-  //   this._currentIndex = 0;
-  //   this._selectedDocs$.next(docs);
-  // }
-
-  // get selectedDocs$(): Observable<IDocument[]> {
-  //   return this._selectedDocs$.asObservable();
-  // }
-
-  // get currentDoc$(): Observable<IDocument> {
-  //   return combineLatest(
-  //     this._currentIndex$,
-  //     this._selectedDocs$
-  //   ).pipe(
-  //     map(([i, docs]) => docs[i])
-  //   );
-  // }
 
   _documents: IDocument[];
   _index: number;
 
   current$: BehaviorSubject<IDocument>;
-  // entity$ = new BehaviorSubject<IDocument>({ ID: '', docCategory: 'default', docCode: 'default', docTitle: 'default', docRecordDate: 'default'});
 
   set documents(docs: IDocument[]) {
     this._index = 0;
     this._documents = docs;
     this.current$.next(this._documents[this._index]);
   }
-
-  // get entity() {
-  //   return this.entity$.asObservable();
-  // }
 
   get current(): Observable<IDocument> {
     return this.current$.asObservable();
