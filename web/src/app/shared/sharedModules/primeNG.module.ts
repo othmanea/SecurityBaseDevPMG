@@ -7,6 +7,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { CarouselModule } from 'primeng/carousel';
+import { CardModule } from 'primeng/card';
 import { ChartModule } from 'primeng/chart';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ChipsModule } from 'primeng/chips';
@@ -75,6 +76,7 @@ const MODULES = [
         CalendarModule,
         CarouselModule,
         ChartModule,
+        CardModule,
         CheckboxModule,
         ChipsModule,
         CodeHighlighterModule,

@@ -15,7 +15,7 @@
                                         [disabled]="selectedDocs.length === 0">
                                     </button>
                                     <button pButton type="button" label="Edit" [disabled]="selectedDocs.length === 0"  icon="far fa-edit" class="ui-button-warning" (click)="editSelectedDocs()"></button>
-                                    <button pButton type="button" label="Unselect" icon="fas fa-times-circle" class="ui-button-info" (click)="unSelectDocs()"></button>
+                                    <button pButton type="button" label="Unselect" [disabled]="selectedDocs.length === 0" icon="fas fa-times-circle" class="ui-button-info" (click)="unSelectDocs()"></button>
                                         
                                     <i class="pi pi-bars"></i>
     
@@ -68,21 +68,25 @@
                     </ng-template>
                    
                     <ng-template pTemplate="summary">
-                        <span>
-                            Il y a {{docs?.length}} documents.
-                        </span>
-                        <span>
-                            dont {{selectedDocs?.length}} sélectionné(s).
-                        </span>
-                        <ul>
+                        <div class="ui-helper-clearfix">
+                                    <button type="button" pButton icon="fas fa-file" iconPos="left" label="All Data" (click)="dt.exportCSV()" style="float:right"></button>
+                                    <button type="button" [disabled]="selectedDocs.length === 0" pButton icon="far fa-file" iconPos="left" label="Selection Only" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
+                               
+                            <span>
+                                Il y a {{docs?.length}} documents.
+                            </span>
+                            <span>
+                                dont {{selectedDocs?.length}} sélectionné(s).
+                            </span>
+                        </div>
+                        <span *ngIf="selectedDocs.length > 0">Selected documents : </span>
+                        <p-card *ngIf="selectedDocs.length > 0">
+                            <ul>
                                 <li *ngFor="let doc of selectedDocs" style="text-align: left">
                                     {{doc.ID + ' - ' + doc.docTitle + ' - ' + doc.docCode }}
                                 </li>
                             </ul>
-                            <div class="ui-helper-clearfix">
-                                    <button type="button" pButton icon="fas fa-file" iconPos="left" label="All Data" (click)="dt.exportCSV()" style="float:left"></button>
-                                    <button type="button" pButton icon="far fa-file" iconPos="left" label="Selection Only" (click)="dt.exportCSV({selectionOnly:true})" style="float:right"></button>
-                                </div>
+                        </p-card>
                     </ng-template>
                     </p-table>
                 </div>

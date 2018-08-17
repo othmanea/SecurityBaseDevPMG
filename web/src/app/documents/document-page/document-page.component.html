@@ -31,7 +31,7 @@
         </p-fileUpload> -->
       
         <p-footer>
-          <button type="button" pButton icon="pi pi-close" (click)="cancel()" label="Cancel"></button>
+          <button type="button" pButton icon="pi pi-times" (click)="cancel()" label="Cancel"></button>
           <button [disabled]="!edit" type="button" pButton icon="pi pi-save" (click)="saveDoc()" label="Save" class="ui-button-secondary"></button>
           <button [disabled]="edit" type="button" pButton icon="pi pi-pencil" (click)="editDoc()" label="Edit" class="ui-button-secondary"></button>
           <button type="button" pButton icon="pi pi-trash" (click)="deleteDoc()" label="Delete" class="ui-button-danger"></button>
