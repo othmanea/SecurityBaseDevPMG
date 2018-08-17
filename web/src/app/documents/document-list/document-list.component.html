@@ -14,8 +14,8 @@
                                         pButton type="button" label="Vue" icon="fa fa-eye" class="ui-button-success" (click)="viewSelectedDocs()" 
                                         [disabled]="selectedDocs.length === 0">
                                     </button>
-                                    <button pButton type="button" label="Edit" [disabled]="!editDoc"  icon="far fa-edit" class="ui-button-warning" (click)="editSelectedDocs()"></button>
-                                    <button pButton type="button" label="Print" icon="fa fa-print" class="ui-button-info" (click)="printSelectedDocs()"></button>
+                                    <button pButton type="button" label="Edit" [disabled]="selectedDocs.length === 0"  icon="far fa-edit" class="ui-button-warning" (click)="editSelectedDocs()"></button>
+                                    <button pButton type="button" label="Unselect" icon="fas fa-times-circle" class="ui-button-info" (click)="unSelectDocs()"></button>
                                         
                                     <i class="pi pi-bars"></i>
     

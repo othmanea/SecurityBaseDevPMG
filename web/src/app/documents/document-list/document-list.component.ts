@@ -96,13 +96,24 @@ export class DocumentListComponent implements OnInit {
   }
 
   addNewDoc() {
+    this.display = true;
+    this.newDoc = true;
+    this.editDoc = true;
+
   }
 
   editSelectedDocs() {
+    this.documentService.documents = this.selectedDocs;
+    this.display = true;
+    this.editDoc = true;
   }
 
   printSelectedDocs() {}
 
   deleteSelectedDocs() {}
 
+  unSelectDocs() {
+    this.selectedDocs = [];
+    this.refresh();
+  }
 }
