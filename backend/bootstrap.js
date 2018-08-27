@@ -5,3 +5,5 @@
  
  //directory.setLoginManager('login/login');
  directory.setLoginManager("login/login-manager" , "Admin");
+
+ httpServer.addRequestHandler('^/api/uploaddocument$', './handlers/handler.js', 'handleDocument');
